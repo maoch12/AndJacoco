@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.ttp.and_jacoco'
+//
+jacocoCoverageConfig {
+    jacocoEnable true
+    branchName 'main'
+    appName="testApp"
+    execDir "${project.buildDir.absolutePath}/outputs/coverage"
+    sourceDirectories = getAllJavaDir()
+    classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"]
+    gitPushShell="${project.projectDir}/shell/gitPushShell.sh"
+    copyClassShell="${project.projectDir}/shell/pullDiffClass.sh"
+    includes = ['com.andjacoco.demo'] //
+    excludeClass = {
+//        println("exclude it=${it}")
+        return false
+    }
+    excludeMethod = {
+        println("excludeMethod it=${it}")
+        return false
+    }
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.andjacoco.demo"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental = true  //开启增量编译
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
+            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug{
+            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
+            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
+
+        }
+    }
+}
+
+
+
+def ArrayList<String> getAllJavaDir() {
+    Set<Project> projects = project.rootProject.subprojects
+    List<String> javaDir = new ArrayList<>(projects.size())
+    projects.forEach {
+        javaDir.add("$it.projectDir/src/main/java")
+    }
+    return javaDir
+}
+
+def isWindows(){
+    return System.properties['os.name'].toLowerCase().contains('windows')
+}
+
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation project(path: ':jacoco-core')
+
+    implementation('org.jacoco:org.jacoco.report:0.8.5') {
+        exclude group: 'org.jacoco', module: 'org.jacoco.core'
+    }
+    testImplementation project(path: ':jacoco-core')
+
+    api "com.ttp.jacoco:rt:0.1.1"
+
+}

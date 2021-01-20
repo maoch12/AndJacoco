@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+    }
+
+
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+//            repository(url: uri('/Users/wzh/ttpc/repos/jacoco'))
+//            pom.version = '0.0.7'
+//            pom.groupId = 'com.ttp.jacoco'
+//            pom.artifactId = 'rt'
+            //提交到远程服务器：
+            repository(url: "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/") {
+                authentication(userName: "devmobile", password: "devmobile")
+            }
+            pom.version = '0.1.1'
+            pom.groupId = 'com.ttp.jacoco'
+            pom.artifactId = 'rt'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    compileOnly('com.squareup.okhttp3:okhttp:3.14.9')
+
+
+}
