@@ -1,7 +1,7 @@
 apply plugin: 'kotlin'
 apply plugin: 'groovy'
 apply plugin: 'maven'
-//group='com.github.ttpai'
+group='com.github.ttpai'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -16,9 +16,8 @@ dependencies {
     implementation ('org.jacoco:org.jacoco.report:0.8.5'){
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
-    api project(path: ':jacoco-core')
-//    implementation 'com.ttp.jacoco:core:1.0.0'
-//    implementation 'com.github.ttpai:AndJacoco:v0.0.1'
+//    api project(path: ':jacoco-core')
+//    implementation 'com.github.ttpai:AndJacoco:jacoco-core:0.0.2'
 }
 
 sourceCompatibility = "1.8"
