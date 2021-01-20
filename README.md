@@ -1,6 +1,6 @@
 # AndJacoco
-AndJacoco 是用于Android App的代码覆盖工具，基于jacoco源码修改而来。相比于原版jacoco全量测试，AndJacoco只针对于
-增量代码的覆盖测试。通过配置要对比的分支，得到两分支差异代码，来实现只对增量代码插入。
+AndJacoco 是用于Android App的增量代码测试覆盖率工具，基于jacoco源码修改而来。相比于原版jacoco全量测试，AndJacoco只针对于
+增量代码的覆盖测试。通过配置要对比的分支，得到两分支差异代码，来实现只对增量代码插入。输出html报告供查看。
 ### 接入
 在项目根目录的build.gradle添加jitpack仓库与插件
 ```
