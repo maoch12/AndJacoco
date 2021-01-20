@@ -63,16 +63,16 @@ dependencies {
 }
 
 ```
-jacocoCoverageConfig 是代码覆盖的配置。
-jacocoEnable： 是总开关，开启会copy class,执行 git命令等，插入代码。线上包建议关闭。
-branchName: 要对比的分支名，一般为线上稳定分支，如master，用于切换到该分支copy class
-appName: 应用的名称，填项目名即可。
-execDir：生成报告时，从服务器下载的ec 文件存放目录
-classDirectories：class 存放路径，enable开启时会copy class 到该目录
-gitPushShell、copyClassShell：开启时会执行git 命令，建议复制app/shell 文件夹到你的项目中，再对具体命令修改。
-includes：要保存的class 包名，建议只保存自己包名的class。当这些class 有差异时才会插入代码。
-excludeClass：就算是你项目的包名，可能还要过滤某些自动生成的class,例如 DataBinding....。return true表示过滤
-excludeMethod：过滤某些方法，因为在编译时，会自动生成某些方法。如带 $ 的虚方法。
+jacocoCoverageConfig 是代码覆盖的配置。  
+jacocoEnable： 是总开关，开启会copy class,执行 git命令等，插入代码。线上包建议关闭。  
+branchName: 要对比的分支名，一般为线上稳定分支，如master，用于切换到该分支copy class  
+appName: 应用的名称，填项目名即可。  
+execDir：生成报告时，从服务器下载的ec 文件存放目录  
+classDirectories：class 存放路径，enable开启时会copy class 到该目录  
+gitPushShell、copyClassShell：开启时会执行git 命令，建议复制app/shell 文件夹到你的项目中，再对具体命令修改。  
+includes：要保存的class 包名，建议只保存自己包名的class。当这些class 有差异时才会插入代码。  
+excludeClass：就算是你项目的包名，可能还要过滤某些自动生成的class,例如 DataBinding....。return true表示过滤  
+excludeMethod：过滤某些方法，因为在编译时，会自动生成某些方法。如带 $ 的虚方法。  
 reportDirectory：报告输出目录，默认为 ``"${project.buildDir.getAbsolutePath()}/outputs/report"`
 
 rt 是运行时的库，rt-no-op 是空代码实现，用于正式包编译不报错
@@ -102,8 +102,7 @@ public void onCreate() {
 
     }
 ```
-详细见demo源码。
+详细见demo源码。  
 服务器源码在WebServer 项目，把WebServer.war 放在tomcat 启动即可。
-
 
 原理：[Android 增量代码覆盖实践](https://blog.csdn.net/u010521645/article/details/112780673)
