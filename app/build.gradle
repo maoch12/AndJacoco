@@ -3,22 +3,22 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.ttp.and_jacoco'
 
-
+//代码覆盖配置
 jacocoCoverageConfig {
-    jacocoEnable true
-    branchName 'main'
-    appName="testApp"
-    execDir "${project.buildDir.absolutePath}/outputs/coverage"
-    sourceDirectories = getAllJavaDir()
-    classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"]
-    gitPushShell="${project.projectDir}/shell/gitPushShell.sh"
-    copyClassShell="${project.projectDir}/shell/pullDiffClass.sh"
-    includes = ['com.andjacoco.demo'] //
-    excludeClass = {
+    jacocoEnable true //开关
+    branchName 'main'//要对比的分支名
+    appName="testApp"//appName
+    execDir "${project.buildDir.absolutePath}/outputs/coverage"//ec 下载存放路径
+    sourceDirectories = getAllJavaDir() //源码路径
+    classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径
+    gitPushShell="${project.projectDir}/shell/gitPushShell.sh" //提交git 命令
+    copyClassShell="${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
+    includes = ['com.andjacoco.demo'] //要 包含的class 包名
+    excludeClass = { // return true 表示要排除的class
 //        println("exclude it=${it}")
         return false
     }
-    excludeMethod = {
+    excludeMethod = {//return true 表示要排除此方法
         println("excludeMethod it=${it}")
         return false
     }
@@ -47,15 +47,15 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-//            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
-//            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
+            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
+            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug{
-//            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
-//            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
+            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
+            buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
 
         }
     }
