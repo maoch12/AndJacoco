@@ -13,7 +13,7 @@ public class MyApp extends Application {
         app = this;
         int a=0;
 
-        CodeCoverageManager.init(app,"demo",BuildConfig.VERSION_CODE);
+        CodeCoverageManager.init(app,BuildConfig.appName,BuildConfig.VERSION_CODE,"http://10.10.17.105:8080");//内网 服务器地址);
         CodeCoverageManager.uploadData();
     }
 

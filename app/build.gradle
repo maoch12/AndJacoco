@@ -47,16 +47,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
             buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug{
-            buildConfigField "boolean", "jacocoEnable", "${jacocoCoverageConfig.jacocoEnable}"
             buildConfigField "String", "appName", "\"${jacocoCoverageConfig.appName}\""
-
         }
     }
 }

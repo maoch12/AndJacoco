@@ -16,8 +16,8 @@ dependencies {
     implementation ('org.jacoco:org.jacoco.report:0.8.5'){
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
-//    implementation project(path: ':jacoco-core')
-    implementation "com.github.ttpai.AndJacoco:jacoco-core:0.0.5"
+    implementation project(path: ':jacoco-core')
+//    implementation "com.github.ttpai.AndJacoco:jacoco-core:0.0.5"
 
 }
 
