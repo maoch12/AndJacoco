@@ -13,7 +13,7 @@ public class MyApp extends Application {
         app = this;
         int a=0;
 
-        CodeCoverageManager.init(app,BuildConfig.appName,BuildConfig.VERSION_CODE);
+        CodeCoverageManager.init(app,"demo",BuildConfig.VERSION_CODE);
         CodeCoverageManager.uploadData();
     }
 

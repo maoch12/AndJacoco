@@ -1,6 +1,6 @@
 include ':rt-no-op'
 include ':rt'
-include ':core'
+include ':jacoco-core'
 include ':plugin'
 include ':app'
 //rootProject.name = "jacoco-plugin"

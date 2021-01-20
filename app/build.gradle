@@ -90,12 +90,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation project(path: ':core')
+    androidTestImplementation project(path: ':jacoco-core')
 
     implementation('org.jacoco:org.jacoco.report:0.8.5') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
 
-    api "com.github.ttpai:AndJacoco:0.0.2"
+//    api "com.github.ttpai:AndJacoco:0.0.3"
 
 }
