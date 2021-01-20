@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+group='com.github.ttpai'
 
 android {
     compileSdkVersion 29
@@ -16,25 +17,6 @@ android {
         targetCompatibility = "1.8"
     }
 }
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-//            repository(url: uri('/Users/wzh/ttpc/repos/jacoco'))
-//            pom.version = '0.0.7'
-//            pom.groupId = 'com.ttp.jacoco'
-//            pom.artifactId = 'rt'
-            //提交到远程服务器：
-            repository(url: "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/") {
-                authentication(userName: "devmobile", password: "devmobile")
-            }
-            pom.version = '0.1.1'
-            pom.groupId = 'com.ttp.jacoco'
-            pom.artifactId = 'rt'
-        }
-    }
-}
-
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
