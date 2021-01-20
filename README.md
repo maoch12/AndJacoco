@@ -63,7 +63,7 @@ dependencies {
 }
 
 ```
-上面的jacocoCoverageConfig 是所有的配置。
+jacocoCoverageConfig 是代码覆盖的配置。
 jacocoEnable： 是总开关，开启会copy class,执行 git命令等，插入代码。线上包建议关闭。
 branchName: 要对比的分支名，一般为线上稳定分支，如master，用于切换到该分支copy class
 appName: 应用的名称，填项目名即可。
