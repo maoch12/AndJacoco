@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.ttp.and_jacoco'
-//
-/*
+apply plugin: 'com.ttp.and_jacoco'
+
 
 jacocoCoverageConfig {
     jacocoEnable true
@@ -24,7 +23,6 @@ jacocoCoverageConfig {
         return false
     }
 }
-*/
 
 android {
     compileSdkVersion 29
@@ -96,6 +94,8 @@ dependencies {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
 
-    api "com.github.ttpai.AndJacoco:rt-no-op:0.0.4"
+
+    debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.5"
+    releaseImplementation "com.github.ttpai.AndJacoco:rt-no-op:0.0.5"
 
 }
