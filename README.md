@@ -56,6 +56,17 @@ jacocoCoverageConfig {
         }
     }
 
+
+def ArrayList<String> getAllJavaDir() {
+    //获取所有module 的源码路径
+    Set<Project> projects = project.rootProject.subprojects
+    List<String> javaDir = new ArrayList<>(projects.size())
+    projects.forEach {
+        javaDir.add("$it.projectDir/src/main/java")
+    }
+    return javaDir
+}
+
 dependencies {
 
     debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.5"
