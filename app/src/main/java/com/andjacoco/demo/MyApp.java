@@ -12,7 +12,7 @@ public class MyApp extends Application {
         super.onCreate();
         app = this;
 
-//        CodeCoverageManager.init(app, BuildConfig.host);//内网 服务器地址);
+        CodeCoverageManager.init(app, BuildConfig.host);//内网 服务器地址);
         CodeCoverageManager.uploadData();
     }
 
