@@ -251,9 +251,9 @@ class BranchDiffTask extends DefaultTask {
         def dataDir = jacocoExtension.execDir
         new File(dataDir).mkdirs()
 
-        def host = "http://10.10.17.105:8080"
-        def appName = jacocoExtension.appName
+        def host = jacocoExtension.host
         def android = project.extensions.android
+        def appName = android.defaultConfig.applicationId.replace(".","")
         def versionCode = android.defaultConfig.versionCode
 //        http://10.10.17.105:8080/WebServer/JacocoApi/queryEcFile?appName=dealer&versionCode=100
 

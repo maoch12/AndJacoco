@@ -21,8 +21,8 @@ class JacocoExtension {
     String copyClassShell
     //git-bash的路径，插件会自动寻找路径，如果找不到，建议自行配置
     private String gitBashPath
-    //appName,与上传时一样
-    String appName
+    //下载ec 的服务器
+    String host
 
 
     /**

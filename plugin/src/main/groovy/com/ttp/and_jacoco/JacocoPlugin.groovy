@@ -45,14 +45,6 @@ class JacocoPlugin implements Plugin<Project> {
         project.afterEvaluate {
             android.applicationVariants.all { variant ->
                 def variantName = variant.name.capitalize()
-//                def compileJavaWithJavacTask = project.tasks.findByName("compile${variantName}JavaWithJavac")
-//
-//                ClassCopyTask classCopyTask = project.tasks.create("copy${variantName}classes", ClassCopyTask)
-//                classCopyTask.variantName = variantName
-//
-//                classCopyTask.dependsOn compileJavaWithJavacTask
-//                def compileSourcesTask = project.tasks.findByName("compile${variantName}Sources")
-//                compileSourcesTask.dependsOn classCopyTask
 
                 if (project.tasks.findByName('generateReport') == null) {
                     BranchDiffTask branchDiffTask = project.tasks.create('generateReport', BranchDiffTask)

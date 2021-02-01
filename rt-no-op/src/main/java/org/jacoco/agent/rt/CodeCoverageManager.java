@@ -14,10 +14,8 @@ public class CodeCoverageManager {
     private CodeCoverageManager() {
     }
 
-    public static void init(Context context,String appName,int verCode){
-    }
 
-    public static void init(Context context,String appName,int verCode,String serverHost){
+    public static void init(Context context,String serverHost){
     }
 
     public static void generateCoverageFile() {

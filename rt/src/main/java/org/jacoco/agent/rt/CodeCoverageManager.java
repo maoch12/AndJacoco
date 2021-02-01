@@ -1,6 +1,8 @@
 package org.jacoco.agent.rt;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import java.io.Closeable;
@@ -37,17 +39,11 @@ public class CodeCoverageManager {
 
     private static final String TAG = "CodeCoverageManager";
 
-    /**
-     * BuildConfig.appName,BuildConfig.VERSION_CODE
-     */
-    public static void init(Context context,String appName,int verCode){
-        init(context,appName,verCode,null);
-    }
 
-    public static void init(Context context,String appName,int verCode,String serverHost){
+    public static void init(Context context,String serverHost){
        String path=context.getFilesDir().getAbsolutePath();
-        APP_NAME=appName;
-        versionCode=verCode;
+        APP_NAME=context.getPackageName().replace(".","");
+        versionCode=getVersion(context);
         if(serverHost!=null)
             URL_HOST=serverHost;
 
@@ -69,6 +65,16 @@ public class CodeCoverageManager {
         sInstance.upload();
     }
 
+    public static int getVersion(Context context) {
+        try {
+            PackageManager manager = context.getPackageManager();
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            return info.versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     private CodeCoverageManager() {
     }
