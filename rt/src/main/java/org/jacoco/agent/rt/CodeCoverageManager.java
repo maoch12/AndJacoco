@@ -65,7 +65,7 @@ public class CodeCoverageManager {
         sInstance.upload();
     }
 
-    public static int getVersion(Context context) {
+    private static int getVersion(Context context) {
         try {
             PackageManager manager = context.getPackageManager();
             PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
