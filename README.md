@@ -116,5 +116,9 @@ public void onCreate() {
 ```
 详细见demo源码。  
 
+运行一会，打开关闭几个activity，重启app,这时app 会把上次的 ec 文件上传到服务器。
+### 生成报告
+执行 ./gradlew generateReport 任务生成报告，报告生成目录 app/builds/outputs/report，打开index.html，就可以看见本次的覆盖率报告了。
+
 
 原理：[Android 增量代码覆盖实践](https://blog.csdn.net/u010521645/article/details/112780673)
